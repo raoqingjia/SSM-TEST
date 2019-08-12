@@ -12,6 +12,7 @@ public class SysRole  implements Serializable{
     private Date modifiedTime;
     private String createdUser;
     private String modifiedUser;
+
 	public SysRole() {
 		super();
 		// TODO Auto-generated constructor stub
