@@ -24,10 +24,16 @@
 	<context:component-scan base-package="com.project.**"></context:component-scan>
 	<!-- 配置MVC注解扫描 -->
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<!-- 处理静态资源 -->
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
-		<property name="suffix" value=".jsp" />
+		<!-- 访问WEB-INFO下以.jsp结尾的文件 -->
+		<!-- <property name="suffix" value=".jsp" /> -->
+		<!-- 访问WEB-INFO下以.html结尾的文件 -->
+		<property name="suffix" value=".html" />
 	</bean>
 
 	<util:properties id="cfg" location="classpath:config.properties" />

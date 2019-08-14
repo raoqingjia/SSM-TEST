@@ -5,6 +5,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>fistst Page</h2>
+	<h2>index Page</h2>
+	<button type="button" id="getInfo">get information</button>
+	<p id="text"></p>
+	<div id="load"></div>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+
+
+   $("#getInfo").click(function(){
+	   $.ajax({
+	        type: "GET",
+	        url: 'findSysRoleObject',
+	        cache: false,
+	        dataType : "json",    //返回值类型
+	        contentType:"application/json;charset=utf-8",  //告诉后台传的数据格式
+	        async: true,        //默认为异步请求
+	        timeout : 50000,    //超时时间：50秒
+	        success: function(data) {
+	           console.log(data);
+	           $("#text").text(data);
+	           $("#load").load("/SSM-TEST/pages/getLoad");
+	           
+	        },
+	        error: function(error) {
+	            console.log(error);
+	        },
+	     
+	  });
+   });
+</script>
 </body>
 </html>
