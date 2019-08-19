@@ -5,4 +5,8 @@
 	<select id="findSysRoleObject" resultType="sysRole">
 		select * from sys_roles;
 	</select>
+	<select id="deleteSysRoleObject" resultType="integer">
+		delete from sys_roles where in id 
+		<foreach collection="ids" item="id" open="(" close=")" separator=","></foreach>
+	</select>
 </mapper>

@@ -1,7 +1,10 @@
 package com.project.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class SysRole  implements Serializable{
 	private static final long serialVersionUID = -4916543590737925184L;
@@ -35,12 +38,17 @@ public class SysRole  implements Serializable{
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public Date getCreatedTime() {
-		return createdTime;
+	
+//	指定日期格式
+	public String getCreatedTime() {
+		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return sdf.format(createdTime);
 	}
 	public void setCreatedTime(Date createdTime) {
 		this.createdTime = createdTime;
 	}
+//	指定日期格式   timezone="GMT+8"东八区
+	@JsonFormat(pattern="yyyy-MM-dd",locale="zh",timezone="GMT+8")
 	public Date getModifiedTime() {
 		return modifiedTime;
 	}

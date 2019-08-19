@@ -12,10 +12,16 @@ import com.project.service.SysRoleService;
 public class SysRoleServiceImpl implements SysRoleService{
 	@Autowired
      private SysRoleDao sysroledao;
-
+    
+    // 查找数据方法	
 	public List<SysRole> findSysRoleObject() {
 		List<SysRole> result=sysroledao.findSysRoleObject();
 		return   result;
+	}
+	// 删除数据
+	public Integer deleteSysRoleObject(String[] ids) {
+		Integer result=sysroledao.deleteSysRoleObject(ids);
+		return result;
 	}
 	
 	
