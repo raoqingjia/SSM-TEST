@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -29,7 +31,6 @@ public class SysRoleController  {
 	  
    @RequestMapping("/index")
    public ModelAndView Index(ModelAndView mv){
-	   System.out.println("555");
 	   mv.setViewName("index");
 	return mv;
    }
@@ -39,9 +40,11 @@ public class SysRoleController  {
 	   mv.setViewName("load");
 	return mv;
    }
+   
    @RequestMapping("/findSysRoleObject")
    @ResponseBody
-   public List<SysRole> findSysRoleObject(ModelAndView mv){
+   @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+   public List<SysRole> findSysRoleObject(){
 	   List<SysRole> list =sysRoleService.findSysRoleObject(); 
 	return list;
    }
@@ -49,11 +52,19 @@ public class SysRoleController  {
    @RequestMapping("/deleteSysRoleObject")
    @ResponseBody
    public Integer deleteSysRoleObject(@Param("ids") String ids){
-	   String[] list=ids.split(",");
 	   System.out.println(ids);
+	   String[] list=ids.split(",");
+	   System.out.println(Arrays.toString(list));
 	   Integer result=sysRoleService.deleteSysRoleObject(list); 
 	return result;
    }
    
+   @RequestMapping("/insertSysRoleObject")
+   @ResponseBody
+   public Integer insertSysRoleObject(SysRole entity){
+	   System.out.println(entity);
+	   Integer result=sysRoleService.insertSysRoleObject(entity); 
+	return result;
+   }
    
 }

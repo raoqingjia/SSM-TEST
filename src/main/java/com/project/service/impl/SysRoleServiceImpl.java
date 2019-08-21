@@ -23,6 +23,11 @@ public class SysRoleServiceImpl implements SysRoleService{
 		Integer result=sysroledao.deleteSysRoleObject(ids);
 		return result;
 	}
+	// ≤Â»Î ˝æ›
+	public Integer insertSysRoleObject(SysRole entity) {
+		Integer result=sysroledao.insertSysRoleObject(entity);
+		return result;
+	}
 	
 	
 

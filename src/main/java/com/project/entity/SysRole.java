@@ -41,8 +41,12 @@ public class SysRole  implements Serializable{
 	
 //	指定日期格式
 	public String getCreatedTime() {
-		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return sdf.format(createdTime);
+		if(createdTime==null){
+			return "--";
+		}else{
+			SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			return sdf.format(createdTime);
+		}
 	}
 	public void setCreatedTime(Date createdTime) {
 		this.createdTime = createdTime;

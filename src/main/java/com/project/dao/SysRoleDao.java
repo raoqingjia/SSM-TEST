@@ -10,4 +10,5 @@ import com.project.entity.SysRole;
 public interface SysRoleDao {
 	List<SysRole> findSysRoleObject ();
 	Integer deleteSysRoleObject (@Param("ids") String[] ids);
+	Integer insertSysRoleObject (SysRole entity);
 }

@@ -5,8 +5,17 @@
 	<select id="findSysRoleObject" resultType="sysRole">
 		select * from sys_roles;
 	</select>
-	<select id="deleteSysRoleObject" resultType="integer">
-		delete from sys_roles where in id 
-		<foreach collection="ids" item="id" open="(" close=")" separator=","></foreach>
-	</select>
+	<delete id="deleteSysRoleObject">
+		delete from sys_roles where id  in 
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+		   ${id}
+		</foreach>
+	</delete>
+	<insert id="insertSysRoleObject"  parameterType="sysRole">
+	   insert into sys_roles 
+	   (id,name,note,createdTime,createdUser,modifiedTime,modifiedUser) 
+	   values (null,#{name},#{note},now(),#{createdUser},now(),#{modifiedUser})
+	   
+	   
+	</insert>
 </mapper>
